@@ -12,33 +12,28 @@ public class Main {
 
     public static void iniciarPartida(Scanner sc) {
 
-    String nombre;
+        String nombre;
 
-    do {
-        System.out.print("Introduce tu nombre: ");
-        nombre = sc.nextLine();
+        do {
+            System.out.print("Introduce tu nombre: ");
+            nombre = sc.nextLine();
 
-        if (nombre.isEmpty()) {
-            System.out.println("El nombre no puede estar vacio.");
-        }
+            if (nombre.isEmpty()) {
+                System.out.println("El nombre no puede estar vacio.");
+            }
 
-    } while (nombre.isEmpty());
-    
-    int vida = 100;
-    int pociones = 3;
-    int puntos = 0;
+        } while (nombre.isEmpty());
 
-    limpiarPantalla();
+        int vida = 100;
+        int pociones = 3;
+        int puntos = 0;
 
-    System.out.println("================================");
-    System.out.println("   BIENVENIDO, " + nombre);
-    System.out.println("================================");
-}
+        limpiarPantalla();
 
-
-    
-
-
+        System.out.println("================================");
+        System.out.println("   BIENVENIDO, " + nombre);
+        System.out.println("================================");
+    }
 
     public static void pausa(Scanner sc) {
         System.out.println("\nPresiona Enter para continuar...");
@@ -57,6 +52,7 @@ public class Main {
         System.out.println("Conseguiras puntos por cada enemigo derrotado y podras entrar en el ranking.");
         System.out.println("===========================");
         pausa(sc);
+
     }
 
     public static void main(String[] args) {
@@ -117,6 +113,8 @@ public class Main {
                 System.out.println("ENTRANDO EN AYUDA");
                 mostrarAyuda(sc);
                 System.out.println("SALIENDO DE AYUDA");
+                limpiarPantalla();
+
                 break;
 
             case 4:
