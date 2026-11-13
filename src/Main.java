@@ -4,6 +4,12 @@ import java.util.Scanner;
 
 public class Main {
 
+    Personaje mago = new Personaje("Mago", "Baston magico", 75, 15, 25);
+
+    Personaje heroe = new Personaje("Heroe", "Espada", 100, 10, 20);
+
+    Personaje arquero = new Personaje("Arquero", "Arco", 85, 12, 22);
+
     public static void limpiarPantalla() {
         for (int i = 0; i < 30; i++) {
             System.out.println();
