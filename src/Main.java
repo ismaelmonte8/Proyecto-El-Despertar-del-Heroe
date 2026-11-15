@@ -4,12 +4,6 @@ import java.util.Scanner;
 
 public class Main {
 
-    Personaje mago = new Personaje("Mago", "Baston magico", 75, 15, 25);
-
-    Personaje heroe = new Personaje("Heroe", "Espada", 100, 10, 20);
-
-    Personaje arquero = new Personaje("Arquero", "Arco", 85, 12, 22);
-
     public static void limpiarPantalla() {
         for (int i = 0; i < 30; i++) {
             System.out.println();
@@ -29,8 +23,35 @@ public class Main {
             }
 
         } while (nombre.isEmpty());
+        int opcionPersonaje;
+        Personaje personaje = null;
 
-        int vida = 100;
+        do {
+            System.out.println("\n===== ELIGE TU PERSONAJE =====");
+            System.out.println("1. Mago");
+            System.out.println("2. Heroe");
+            System.out.println("3. Arquero");
+
+            opcionPersonaje = leerOpcion(sc);
+
+            if (opcionPersonaje < 1 || opcionPersonaje > 3) {
+                System.out.println("Personaje no valido.");
+            }
+
+        } while (opcionPersonaje < 1 || opcionPersonaje > 3);
+
+        if (opcionPersonaje == 1) {
+            personaje = new Personaje("Mago", "Baston magico", 75, 15, 25);
+        }
+
+        if (opcionPersonaje == 2) {
+            personaje = new Personaje("Heroe", "Espada", 100, 10, 20);
+        }
+
+        if (opcionPersonaje == 3) {
+            personaje = new Personaje("Arquero", "Arco", 85, 12, 22);
+        }
+        int vida = personaje.getVida();
         int pociones = 3;
         int puntos = 0;
 
@@ -39,6 +60,10 @@ public class Main {
         System.out.println("================================");
         System.out.println("   BIENVENIDO, " + nombre);
         System.out.println("================================");
+        System.out.println("Personaje: " + personaje.getNombre());
+        System.out.println("Arma: " + personaje.getArma());
+        System.out.println("Vida: " + vida);
+        System.out.println("Daño: " + personaje.getDañoMinimo() + " - " + personaje.getDañoMaximo());
     }
 
     public static void pausa(Scanner sc) {
