@@ -27,6 +27,8 @@ public class Main {
         Personaje personaje = null;
 
         do {
+
+            limpiarPantalla();
             System.out.println("\n===== ELIGE TU PERSONAJE =====");
             System.out.println("1. Mago");
             System.out.println("2. Heroe");
@@ -39,6 +41,10 @@ public class Main {
             }
 
         } while (opcionPersonaje < 1 || opcionPersonaje > 3);
+
+        Enemigo enemigo1 = new Enemigo("Goblin", 45, 10, 15);
+        Enemigo enemigo2 = new Enemigo("Orco", 70, 10, 20);
+        Enemigo enemigo3 = new Enemigo("Dragon Oscuro", 100, 10, 25);
 
         if (opcionPersonaje == 1) {
             personaje = new Personaje("Mago", "Baston magico", 75, 15, 25);
@@ -64,12 +70,155 @@ public class Main {
         System.out.println("Arma: " + personaje.getArma());
         System.out.println("Vida: " + vida);
         System.out.println("Daño: " + personaje.getDañoMinimo() + " - " + personaje.getDañoMaximo());
+
+        System.out.println("Tienes " + pociones + " pociones de vida.");
+        System.out.println("1. Comenzar partida");
+        System.out.println("2. Salir");
+
+        int opcionContinuar = 0;
+        opcionContinuar = sc.nextInt();
+
+        while (opcionContinuar == 1) {
+
+            if (opcionContinuar == 1) {
+                limpiarPantalla();
+                System.out.println("Comenzando partida...");
+
+                EmpezarPartidaLore1(sc);
+                if (opcionPersonaje == 1) {
+                    System.out.println("Has elegido al Mago, un maestro de la magia con gran poder ofensivo.");
+                } else if (opcionPersonaje == 2) {
+                    System.out.println("Has elegido al Heroe, un valiente guerrero con gran resistencia.");
+                } else if (opcionPersonaje == 3) {
+                    System.out.println("Has elegido al Arquero, un experto en ataques a distancia y precisión.");
+                }
+                EmpezarPartidaLore2(sc);
+                pausa(sc);
+
+                InfoCombate(sc, personaje, enemigo1);
+
+                while (enemigo1.getVida() > 0 && personaje.getVida() > 0) {
+                    limpiarPantalla();
+                    System.out.println("\n============================");
+                    System.out.println("           COMBATE");
+                    System.out.println("============================");
+                    System.out.println("Tu vida: " + personaje.getVida());
+                    System.out.println("Vida del enemigo: " + enemigo1.getVida());
+
+                    System.out.println("\nQue deseas hacer?");
+                    System.out.println("1. Atacar");
+                    System.out.println("2. Usar pocion de vida");
+                    System.out.println("3. Consultar inventario");
+                    System.out.println("4. Huir");
+
+                    int opcionCombate = leerOpcion(sc);
+
+                    switch (opcionCombate) {
+
+                        case 1:
+                            Atacar(sc, personaje, enemigo1);
+                            break;
+
+                        case 2:
+                            System.out.println("Usar pocion.");
+                            break;
+
+                        case 3:
+                            limpiarPantalla();
+                            System.out.println("===========================");
+                            System.out.println(" Bienvenido al inventario.");
+                            System.out.println("===========================");
+                            System.out.println();
+                            System.out.println("Nombre: " + personaje.getNombre());
+                            System.out.println("Arma: " + personaje.getArma());
+                            System.out.println("Te quedan " + pociones + " pociones de vida.");
+                            pausa(sc);
+                            break;
+
+                        case 4:
+                            System.out.println("Has decidido abandonar.");
+                            return;
+
+                        default:
+                            System.out.println("Opcion no valida.");
+                            break;
+                    }
+                }
+
+                InfoCombate(sc, personaje, enemigo2);
+                InfoCombate(sc, personaje, enemigo3);
+
+            } else {
+
+                System.out.println("Opción no válida. Por favor, selecciona 1 o 2.");
+                opcionContinuar = sc.nextInt();
+            }
+            opcionContinuar++;
+        }
     }
 
     public static void pausa(Scanner sc) {
         System.out.println("\nPresiona Enter para continuar...");
         sc.nextLine();
 
+    }
+
+    public static void EmpezarPartidaLore1(Scanner sc) {
+
+        System.out.println("\nPresiona Enter para continuar...");
+        sc.nextLine();
+        limpiarPantalla();
+        System.out.println("========================================");
+        System.out.println("        EL DESPERTAR DEL HEROE");
+        System.out.println("========================================");
+        System.out.println();
+        System.out.println("Hace muchos años, el reino de Eldoria vivia en paz,");
+        System.out.println("hasta que una misteriosa oscuridad comenzo a extenderse");
+        System.out.println("por sus tierras.");
+        System.out.println("Criaturas malignas aparecieron, los pueblos fueron");
+        System.out.println("abandonados y nadie consiguio detener la amenaza.");
+        System.out.println();
+        System.out.println("Una antigua profecia cuenta que un guerrero elegido");
+        System.out.println("sera capaz de devolver la paz al reino.");
+        System.out.println("Sin embargo, antes debera superar tres peligrosos");
+        System.out.println("encuentros y demostrar su verdadero valor.");
+        System.out.println("Podias elegir entre tres personajes: Mago, Heroe o Arquero.");
+        System.out.println();
+    }
+
+    public static void EmpezarPartidaLore2(Scanner sc) {
+        System.out.println();
+        System.out.println("Tu aventura comienza ahora...");
+        System.out.println();
+        System.out.println("Tres enemigos. Una ultima oportunidad.");
+        System.out.println("El destino de Eldoria esta en tus manos.");
+        System.out.println("========================================");
+        
+
+    }
+
+    public static void InfoCombate(Scanner sc, Personaje personaje, Enemigo enemigo) {
+        limpiarPantalla();
+        System.out.println("\n============================");
+        System.out.println("           COMBATE");
+        System.out.println("============================");
+        System.out.println("Un " + enemigo.getNombre() + " aparece en tu camino.");
+        System.out.println("Vida del enemigo: " + enemigo.getVida());
+        System.out.println("Tu vida: " + personaje.getVida());
+
+        pausa(sc);
+    }
+
+    public static void Atacar(Scanner sc, Personaje personaje, Enemigo enemigo) {
+        limpiarPantalla();
+        System.out.println("\n============================");
+        System.out.println("           COMBATE");
+        System.out.println("============================");
+        System.out.println("Un " + enemigo.getNombre() + " aparece en tu camino.");
+        System.out.println("Vida del enemigo: " + enemigo.getVida());
+        System.out.println("Tu vida: " + personaje.getVida());
+
+        pausa(sc);
     }
 
     public static void mostrarAyuda(Scanner sc) {
