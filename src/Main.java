@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Main {
 
+    int vida = 100;
+
     public static void limpiarPantalla() {
         for (int i = 0; i < 30; i++) {
             System.out.println();
@@ -43,8 +45,8 @@ public class Main {
         } while (opcionPersonaje < 1 || opcionPersonaje > 3);
 
         Enemigo enemigo1 = new Enemigo("Goblin", 45, 10, 15);
-        Enemigo enemigo2 = new Enemigo("Orco", 70, 10, 20);
-        Enemigo enemigo3 = new Enemigo("Dragon Oscuro", 100, 10, 25);
+        Enemigo enemigo2 = new Enemigo("Orco", 70, 15, 20);
+        Enemigo enemigo3 = new Enemigo("Dragon Oscuro", 100, 15, 25);
 
         if (opcionPersonaje == 1) {
             personaje = new Personaje("Mago", "Baston magico", 75, 15, 25);
@@ -76,9 +78,9 @@ public class Main {
         System.out.println("2. Salir");
 
         int opcionContinuar = 0;
-        opcionContinuar = sc.nextInt();
+        opcionContinuar = leerOpcion(sc);
 
-        while (opcionContinuar == 1 && puntos < 100) {
+        while (opcionContinuar == 1) {
 
             if (opcionContinuar == 1) {
                 limpiarPantalla();
@@ -117,7 +119,7 @@ public class Main {
 
                         case 1:
                             Atacar(sc, personaje, enemigo1);
-                            
+
                             limpiarPantalla();
                             if (enemigo1.getVida() > 0) {
                                 AtacarEnemigo(personaje, enemigo1);
@@ -127,7 +129,16 @@ public class Main {
                             break;
 
                         case 2:
-                            System.out.println("Usar pocion.");
+                            int pocionesAntes = pociones;
+
+                            pociones = usarPocion(sc, personaje, pociones);
+
+                            if (pociones < pocionesAntes && enemigo1.getVida() > 0) {
+                                limpiarPantalla();
+                                AtacarEnemigo(personaje, enemigo1);
+                                pausa(sc);
+                            }
+
                             break;
 
                         case 3:
@@ -152,18 +163,15 @@ public class Main {
                     }
                 }
 
-                puntos = 20;
-                pausa(sc);
-                limpiarPantalla();
-                 if (personaje.getVida() <= 0) {
-                    limpiarPantalla();
-                    System.out.println("Has sido derrotado por el " + enemigo1.getNombre() + ". Has perdido.");
-                    System.out.println("Puntos obtenidos: " + puntos);
+                if (personaje.getVida() <= 0) {
+                    mostrarDerrota(sc, enemigo1, puntos);
                     return;
-                }
-                else {
-                System.out.println("¡ENHORABUENA! Has derrotado al " + enemigo1.getNombre() + " y has ganado 20 puntos.");
-                System.out.println("Tienes " + puntos + " puntos");
+                } else {
+                    puntos = 20;
+                    limpiarPantalla();
+                    System.out.println("¡ENHORABUENA! Has derrotado al " + enemigo1.getNombre());
+                    System.out.println("Has ganado 20 puntos.");
+                    System.out.println("Puntos totales: " + puntos);
                 }
                 pausa(sc);
                 limpiarPantalla();
@@ -192,19 +200,26 @@ public class Main {
 
                         case 1:
                             Atacar(sc, personaje, enemigo2);
-                            
+
                             limpiarPantalla();
                             if (enemigo2.getVida() > 0) {
                                 AtacarEnemigo(personaje, enemigo2);
                                 pausa(sc);
                             }
 
-                            
-
                             break;
 
                         case 2:
-                            System.out.println("Usar pocion.");
+                            int pocionesAntes = pociones;
+
+                            pociones = usarPocion(sc, personaje, pociones);
+
+                            if (pociones < pocionesAntes && enemigo2.getVida() > 0) {
+                                limpiarPantalla();
+                                AtacarEnemigo(personaje, enemigo2);
+                                pausa(sc);
+                            }
+
                             break;
 
                         case 3:
@@ -229,18 +244,15 @@ public class Main {
                     }
                 }
 
-                puntos = 50;
-                pausa(sc);
-                limpiarPantalla();
-                 if (personaje.getVida() <= 0) {
-                    limpiarPantalla();
-                    System.out.println("Has sido derrotado por el " + enemigo2.getNombre() + ". Has perdido.");
-                    System.out.println("Puntos obtenidos: " + puntos);
+                if (personaje.getVida() <= 0) {
+                    mostrarDerrota(sc, enemigo2, puntos);
                     return;
-                }
-                else {
-                System.out.println("¡ENHORABUENA! Has derrotado al " + enemigo2.getNombre() + " y has ganado 30 puntos.");
-                System.out.println("Tienes " + puntos + " puntos");
+                } else {
+                    puntos = 50;
+                    limpiarPantalla();
+                    System.out.println("¡ENHORABUENA! Has derrotado al " + enemigo2.getNombre());
+                    System.out.println("Has ganado 30 puntos.");
+                    System.out.println("Puntos totales: " + puntos);
                 }
                 pausa(sc);
                 limpiarPantalla();
@@ -269,7 +281,7 @@ public class Main {
 
                         case 1:
                             Atacar(sc, personaje, enemigo3);
-                            
+
                             limpiarPantalla();
                             if (enemigo3.getVida() > 0) {
                                 AtacarEnemigo(personaje, enemigo3);
@@ -279,7 +291,16 @@ public class Main {
                             break;
 
                         case 2:
-                            System.out.println("Usar pocion.");
+                            int pocionesAntes = pociones;
+
+                            pociones = usarPocion(sc, personaje, pociones);
+
+                            if (pociones < pocionesAntes && enemigo3.getVida() > 0) {
+                                limpiarPantalla();
+                                AtacarEnemigo(personaje, enemigo3);
+                                pausa(sc);
+                            }
+
                             break;
 
                         case 3:
@@ -305,28 +326,36 @@ public class Main {
                 }
 
                 pausa(sc);
-                limpiarPantalla();
                 if (personaje.getVida() <= 0) {
-                    limpiarPantalla();
-                    System.out.println("Has sido derrotado por el " + enemigo3.getNombre() + ". Has perdido.");
-                    System.out.println("Puntos obtenidos: " + puntos);
+                    mostrarDerrota(sc, enemigo3, puntos);
                     return;
+                } else {
+                    puntos = 100;
+                    limpiarPantalla();
+                    System.out.println("¡ENHORABUENA! Has derrotado al " + enemigo3.getNombre());
+                    System.out.println("Has ganado 50 puntos.");
+                    System.out.println("Puntos totales: " + puntos);
+                    pausa(sc);
+                    limpiarPantalla();
+                    System.out.println();
+                    System.out.println("============================");
+                    System.out.println("       VICTORIA FINAL");
+                    System.out.println("============================");
+                    System.out.println("Has salvado el reino de Eldoria.");
+                    System.out.println("¡Enhorabuena por completar la aventura!");
+
+                    pausa(sc);
                 }
-
-                else {
-                System.out.println("¡ENHORABUENA! Has derrotado al " + enemigo3.getNombre() + " y has ganado 50 puntos.");
-                System.out.println("Tienes 100 puntos");
-            }
-                puntos = 100;
-
 
             } else {
 
                 System.out.println("Opción no válida. Por favor, selecciona 1 o 2.");
                 opcionContinuar = sc.nextInt();
             }
+
             opcionContinuar++;
         }
+
     }
 
     public static void pausa(Scanner sc) {
@@ -420,8 +449,7 @@ public class Main {
             System.out.println("El " + enemigo.getNombre() + " ha fallado su ataque.");
         } else {
 
-            int daño = (int) (Math.random() *
-                    (enemigo.getDañoMaximo() - enemigo.getDañoMinimo() + 1))
+            int daño = (int) (Math.random() * (enemigo.getDañoMaximo() - enemigo.getDañoMinimo() + 1))
                     + enemigo.getDañoMinimo();
 
             int vidaRestante = personaje.getVida() - daño;
@@ -436,6 +464,72 @@ public class Main {
             System.out.println("Has recibido " + daño + " puntos de daño.");
             System.out.println("Tu vida restante: " + personaje.getVida());
         }
+    }
+
+    public static int usarPocion(Scanner sc, Personaje personaje, int pociones) {
+        limpiarPantalla();
+        if (pociones <= 0) {
+            System.out.println("No te quedan pociones.");
+        } else {
+
+            int vidaMaxima = 100;
+
+            if (personaje.getNombre().equals("Mago")) {
+                vidaMaxima = 75;
+            }
+
+            if (personaje.getNombre().equals("Arquero")) {
+                vidaMaxima = 85;
+            }
+
+            if (personaje.getVida() >= vidaMaxima) {
+                System.out.println("Ya tienes la vida al maximo.");
+            } else {
+
+                int nuevaVida = personaje.getVida() + 25;
+
+                if (nuevaVida > vidaMaxima) {
+                    nuevaVida = vidaMaxima;
+                }
+
+                personaje.setVida(nuevaVida);
+                pociones--;
+
+                System.out.println("Has utilizado una pocion de vida.");
+                System.out.println("Tu vida ahora es: " + personaje.getVida());
+                System.out.println("Pociones restantes: " + pociones);
+            }
+        }
+
+        pausa(sc);
+        return pociones;
+    }
+
+    public static void mostrarDerrota(Scanner sc, Enemigo enemigo, int puntos) {
+
+        limpiarPantalla();
+
+        int opcionDerrota;
+
+        do {
+            limpiarPantalla();
+
+            System.out.println("============================");
+            System.out.println("           DERROTA");
+            System.out.println("============================");
+            System.out.println("Has sido derrotado por " + enemigo.getNombre());
+            System.out.println("Puntos obtenidos: " + puntos);
+            System.out.println();
+            System.out.println("1. Volver al menu principal");
+
+            opcionDerrota = leerOpcion(sc);
+
+            if (opcionDerrota != 1) {
+                System.out.println("Opcion no valida. Introduce 1.");
+                pausa(sc);
+            }
+
+        } while (opcionDerrota != 1);
     }
 
     public static void mostrarAyuda(Scanner sc) {

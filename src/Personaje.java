@@ -33,6 +33,7 @@ public class Personaje {
     }
 
     public int getVida() {
+        int vida = this.vida;
         return vida;
     }
 
