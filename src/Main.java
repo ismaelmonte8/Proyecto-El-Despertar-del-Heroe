@@ -550,11 +550,28 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         int opcion;
+        Ranking ranking = new Ranking();
+
+        ranking.añadirJugador("Carlos", 300);
+        ranking.añadirJugador("Lucia", 280);
+        ranking.añadirJugador("Pedro", 250);
+        ranking.añadirJugador("Marcos", 220);
+        ranking.añadirJugador("Ana", 200);
+        ranking.añadirJugador("David", 180);
+        ranking.añadirJugador("Marta", 150);
+        ranking.añadirJugador("Pablo", 120);
+        ranking.añadirJugador("Sergio", 100);
+        ranking.añadirJugador("Juan", 80);
+
+        ranking.añadirJugador("Luis", 190);
+        ranking.añadirJugador("Alberto", 50);
+
+        ranking.mostrarRanking();
 
         do {
             mostrarMenu();
             opcion = leerOpcion(sc);
-            ejecutarOpcion(sc, opcion);
+            ejecutarOpcion(sc, opcion, ranking);
 
         } while (opcion != 4);
 
@@ -588,7 +605,7 @@ public class Main {
         }
     }
 
-    public static void ejecutarOpcion(Scanner sc, int opcion) {
+    public static void ejecutarOpcion(Scanner sc, int opcion, Ranking ranking) {
 
         switch (opcion) {
 
@@ -597,7 +614,9 @@ public class Main {
                 break;
 
             case 2:
-                System.out.println("Ranking seleccionado.");
+                limpiarPantalla();
+                ranking.mostrarRanking();
+                pausa(sc);
                 break;
 
             case 3:
