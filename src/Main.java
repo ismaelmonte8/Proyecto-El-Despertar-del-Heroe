@@ -12,7 +12,7 @@ public class Main {
         }
     }
 
-    public static void iniciarPartida(Scanner sc) {
+    public static void iniciarPartida(Scanner sc, Ranking ranking) {
 
         String nombre;
 
@@ -155,6 +155,8 @@ public class Main {
 
                         case 4:
                             System.out.println("Has decidido abandonar.");
+                            ranking.añadirJugador(nombre, puntos);
+                            pausa(sc);
                             return;
 
                         default:
@@ -164,13 +166,14 @@ public class Main {
                 }
 
                 if (personaje.getVida() <= 0) {
+                    ranking.añadirJugador(nombre, puntos);
                     mostrarDerrota(sc, enemigo1, puntos);
                     return;
                 } else {
-                    puntos = 20;
+                    puntos = puntos + 100;
                     limpiarPantalla();
                     System.out.println("¡ENHORABUENA! Has derrotado al " + enemigo1.getNombre());
-                    System.out.println("Has ganado 20 puntos.");
+                    System.out.println("Has ganado 100 puntos.");
                     System.out.println("Puntos totales: " + puntos);
                 }
                 pausa(sc);
@@ -236,6 +239,8 @@ public class Main {
 
                         case 4:
                             System.out.println("Has decidido abandonar.");
+                            ranking.añadirJugador(nombre, puntos);
+                            pausa(sc);
                             return;
 
                         default:
@@ -245,13 +250,14 @@ public class Main {
                 }
 
                 if (personaje.getVida() <= 0) {
+                    ranking.añadirJugador(nombre, puntos);
                     mostrarDerrota(sc, enemigo2, puntos);
                     return;
                 } else {
-                    puntos = 50;
+                    puntos = puntos + 100;
                     limpiarPantalla();
                     System.out.println("¡ENHORABUENA! Has derrotado al " + enemigo2.getNombre());
-                    System.out.println("Has ganado 30 puntos.");
+                    System.out.println("Has ganado 100 puntos.");
                     System.out.println("Puntos totales: " + puntos);
                 }
                 pausa(sc);
@@ -317,6 +323,8 @@ public class Main {
 
                         case 4:
                             System.out.println("Has decidido abandonar.");
+                            ranking.añadirJugador(nombre, puntos);
+                            pausa(sc);
                             return;
 
                         default:
@@ -327,13 +335,17 @@ public class Main {
 
                 pausa(sc);
                 if (personaje.getVida() <= 0) {
+                    ranking.añadirJugador(nombre, puntos);
                     mostrarDerrota(sc, enemigo3, puntos);
                     return;
                 } else {
-                    puntos = 100;
+                    puntos = puntos + 100;
+                    puntos = puntos + personaje.getVida();
+                    
                     limpiarPantalla();
+                    
                     System.out.println("¡ENHORABUENA! Has derrotado al " + enemigo3.getNombre());
-                    System.out.println("Has ganado 50 puntos.");
+                    System.out.println("Has ganado 100 puntos.");
                     System.out.println("Puntos totales: " + puntos);
                     pausa(sc);
                     limpiarPantalla();
@@ -344,6 +356,7 @@ public class Main {
                     System.out.println("Has salvado el reino de Eldoria.");
                     System.out.println("¡Enhorabuena por completar la aventura!");
 
+                    ranking.añadirJugador(nombre, puntos);
                     pausa(sc);
                 }
 
@@ -549,24 +562,10 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        int opcion;
         Ranking ranking = new Ranking();
+        int opcion;
+        
 
-        ranking.añadirJugador("Carlos", 300);
-        ranking.añadirJugador("Lucia", 280);
-        ranking.añadirJugador("Pedro", 250);
-        ranking.añadirJugador("Marcos", 220);
-        ranking.añadirJugador("Ana", 200);
-        ranking.añadirJugador("David", 180);
-        ranking.añadirJugador("Marta", 150);
-        ranking.añadirJugador("Pablo", 120);
-        ranking.añadirJugador("Sergio", 100);
-        ranking.añadirJugador("Juan", 80);
-
-        ranking.añadirJugador("Luis", 190);
-        ranking.añadirJugador("Alberto", 50);
-
-        ranking.mostrarRanking();
 
         do {
             mostrarMenu();
@@ -610,7 +609,7 @@ public class Main {
         switch (opcion) {
 
             case 1:
-                iniciarPartida(sc);
+                iniciarPartida(sc, ranking);
                 break;
 
             case 2:
