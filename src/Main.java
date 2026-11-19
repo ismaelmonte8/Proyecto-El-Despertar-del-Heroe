@@ -17,14 +17,14 @@ public class Main {
         String nombre;
 
         do {
-            System.out.print("Introduce tu nombre: ");
-            nombre = sc.nextLine();
+    System.out.print("Introduce tu nombre: ");
+    nombre = sc.nextLine();
 
-            if (nombre.isEmpty()) {
-                System.out.println("El nombre no puede estar vacio.");
-            }
+    if (nombre.trim().isEmpty()) {
+        System.out.println("El nombre no puede estar vacio.");
+    }
 
-        } while (nombre.isEmpty());
+} while (nombre.trim().isEmpty());
         int opcionPersonaje;
         Personaje personaje = null;
 
@@ -156,6 +156,7 @@ public class Main {
                         case 4:
                             System.out.println("Has decidido abandonar.");
                             ranking.añadirJugador(nombre, puntos);
+                            ranking.guardarXML();
                             pausa(sc);
                             return;
 
@@ -167,6 +168,7 @@ public class Main {
 
                 if (personaje.getVida() <= 0) {
                     ranking.añadirJugador(nombre, puntos);
+                    ranking.guardarXML();
                     mostrarDerrota(sc, enemigo1, puntos);
                     return;
                 } else {
@@ -240,6 +242,7 @@ public class Main {
                         case 4:
                             System.out.println("Has decidido abandonar.");
                             ranking.añadirJugador(nombre, puntos);
+                            ranking.guardarXML();
                             pausa(sc);
                             return;
 
@@ -324,6 +327,7 @@ public class Main {
                         case 4:
                             System.out.println("Has decidido abandonar.");
                             ranking.añadirJugador(nombre, puntos);
+                            ranking.guardarXML();
                             pausa(sc);
                             return;
 
@@ -341,9 +345,11 @@ public class Main {
                 } else {
                     puntos = puntos + 100;
                     puntos = puntos + personaje.getVida();
-                    
+                    ranking.añadirJugador(nombre, puntos);
+                    ranking.guardarXML();
+
                     limpiarPantalla();
-                    
+
                     System.out.println("¡ENHORABUENA! Has derrotado al " + enemigo3.getNombre());
                     System.out.println("Has ganado 100 puntos.");
                     System.out.println("Puntos totales: " + puntos);
@@ -564,8 +570,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Ranking ranking = new Ranking();
         int opcion;
-        
 
+        ranking.cargarXML();
 
         do {
             mostrarMenu();
@@ -578,7 +584,7 @@ public class Main {
     }
 
     public static void mostrarMenu() {
-
+        limpiarPantalla();
         System.out.println("\n================================");
         System.out.println("     EL DESPERTAR DEL HEROE");
         System.out.println("================================");
@@ -615,6 +621,7 @@ public class Main {
             case 2:
                 limpiarPantalla();
                 ranking.mostrarRanking();
+
                 pausa(sc);
                 break;
 
@@ -635,4 +642,7 @@ public class Main {
                 break;
         }
     }
+
+
+    
 }
