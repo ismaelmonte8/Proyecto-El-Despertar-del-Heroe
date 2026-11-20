@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="ranking.xsl"?>
+<!DOCTYPE ranking SYSTEM "ranking.dtd">
+<ranking>
+    <jugador>
+        <nombre>Arturo</nombre>
+        <puntos>350</puntos>
+    </jugador>
+    <jugador>
+        <nombre>Lucia</nombre>
+        <puntos>320</puntos>
+    </jugador>
+    <jugador>
+        <nombre>Carlos</nombre>
+        <puntos>300</puntos>
+    </jugador>
+    <jugador>
+        <nombre>Marta</nombre>
+        <puntos>300</puntos>
+    </jugador>
+    <jugador>
+        <nombre>Pedro</nombre>
+        <puntos>200</puntos>
+    </jugador>
+    <jugador>
+        <nombre>Alexiselcapo2</nombre>
+        <puntos>200</puntos>
+    </jugador>
+    <jugador>
+        <nombre>Alexiselcapo</nombre>
+        <puntos>100</puntos>
+    </jugador>
+    <jugador>
+        <nombre>Alexiselcapo3</nombre>
+        <puntos>100</puntos>
+    </jugador>
+    <jugador>
+        <nombre>Ismael</nombre>
+        <puntos>0</puntos>
+    </jugador>
+    <jugador>
+        <nombre>Ismael</nombre>
+        <puntos>0</puntos>
+    </jugador>
+</ranking>
