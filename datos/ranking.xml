@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE ranking SYSTEM "ranking.dtd">
 <ranking>
     <jugador>
         <nombre>Arturo</nombre>
@@ -33,8 +34,8 @@
         <puntos>100</puntos>
     </jugador>
     <jugador>
-        <nombre>noa</nombre>
-        <puntos>100</puntos>
+        <nombre>Ismael</nombre>
+        <puntos>0</puntos>
     </jugador>
     <jugador>
         <nombre>Ismael</nombre>

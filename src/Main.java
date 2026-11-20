@@ -584,7 +584,8 @@ public class Main {
     }
 
     public static void mostrarMenu() {
-        limpiarPantalla();
+        
+
         System.out.println("\n================================");
         System.out.println("     EL DESPERTAR DEL HEROE");
         System.out.println("================================");
