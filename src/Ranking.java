@@ -160,6 +160,7 @@ public class Ranking {
             
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, "ranking.dtd");
 
             DOMSource origen = new DOMSource(documento);
             StreamResult destino = new StreamResult(new File("datos/ranking.xml"));
