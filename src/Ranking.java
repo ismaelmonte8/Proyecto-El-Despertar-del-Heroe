@@ -157,7 +157,7 @@ public class Ranking {
 
             TransformerFactory transformerFabrica = TransformerFactory.newInstance();
             Transformer transformer = transformerFabrica.newTransformer();
-
+            
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 
