@@ -9,8 +9,8 @@ Archivo utilizado: datos/ranking.xml
 Resultado esperado: Obtener los nombres de los 10 jugadores.
 
 Resultado obtenido: Arturo, Lucia, Carlos, Marta,
-Pedro, Alexiselcapo2, Alexiselcapo, Alexiselcapo3,
-Ismael e Ismael.
+Pedro, Alexiselcapo2, PruebaFinal2, PruebaFinal3,
+Alexiselcapo y Alexiselcapo3.
 
 Estado: CORRECTO.
 
@@ -40,7 +40,7 @@ Archivo utilizado: datos/ranking.xml
 
 Resultado esperado: Encontrar los dos registros de Ismael.
 
-Resultado obtenido: Dos registros de Ismael, ambos con 0 puntos.
+Resultado obtenido: No se ha encontrado ningún registro de Ismael.
 
 Estado: CORRECTO.
 
