@@ -30,15 +30,15 @@
         <puntos>200</puntos>
     </jugador>
     <jugador>
+        <nombre>PruebaFinal3</nombre>
+        <puntos>200</puntos>
+    </jugador>
+    <jugador>
         <nombre>Alexiselcapo</nombre>
         <puntos>100</puntos>
     </jugador>
     <jugador>
         <nombre>Alexiselcapo3</nombre>
-        <puntos>100</puntos>
-    </jugador>
-    <jugador>
-        <nombre>PruebaFinal</nombre>
         <puntos>100</puntos>
     </jugador>
 </ranking>
