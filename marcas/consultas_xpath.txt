@@ -1,0 +1,75 @@
+CONSULTA 1: SELECCIONAR NOMBRES
+
+Pregunta: ¿Cuáles son los nombres de los jugadores del ranking?
+
+XPath: /ranking/jugador/nombre
+
+Archivo utilizado: datos/ranking.xml
+
+Resultado esperado: Obtener los nombres de los 10 jugadores.
+
+Resultado obtenido: Arturo, Lucia, Carlos, Marta,
+Pedro, Alexiselcapo2, Alexiselcapo, Alexiselcapo3,
+Ismael e Ismael.
+
+Estado: CORRECTO.
+
+
+CONSULTA 2: FILTRAR POR PUNTUACION
+
+Pregunta: ¿Que jugadores han conseguido mas de 300 puntos?
+
+XPath: /ranking/jugador[puntos > 300]
+
+Archivo utilizado: datos/ranking.xml
+
+Resultado esperado: Arturo (350 puntos) y Lucia (320 puntos).
+
+Resultado obtenido: Arturo (350 puntos) y Lucia (320 puntos).
+
+Estado: CORRECTO.
+
+
+CONSULTA 3: BUSCAR UN JUGADOR POR NOMBRE
+
+Pregunta: ¿Qué registros del ranking pertenecen al jugador Ismael?
+
+XPath: /ranking/jugador[nombre = 'Ismael']
+
+Archivo utilizado: datos/ranking.xml
+
+Resultado esperado: Encontrar los dos registros de Ismael.
+
+Resultado obtenido: Dos registros de Ismael, ambos con 0 puntos.
+
+Estado: CORRECTO.
+
+
+CONSULTA 4: COMBINAR DOS CONDICIONES
+
+Pregunta: ¿Qué jugadores tienen 300 puntos o más y no se llaman Arturo?
+
+XPath: /ranking/jugador[puntos >= 300 and nombre != 'Arturo']
+
+Archivo utilizado: datos/ranking.xml
+
+Resultado esperado: Lucia (320), Carlos (300) y Marta (300).
+
+Resultado obtenido: Lucia (320), Carlos (300) y Marta (300).
+
+Estado: CORRECTO.
+
+
+CONSULTA 5: CONTAR JUGADORES
+
+Pregunta: ¿Cuántos jugadores hay registrados en el ranking?
+
+XPath: count(/ranking/jugador)
+
+Archivo utilizado: datos/ranking.xml
+
+Resultado esperado: 10 jugadores.
+
+Resultado obtenido: 10 jugadores.
+
+Estado: CORRECTO.
