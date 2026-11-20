@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?xml-stylesheet type="text/xsl" href="ranking.xsl"?>
 <!DOCTYPE ranking SYSTEM "ranking.dtd">
 <ranking>
     <jugador>
@@ -27,6 +26,10 @@
         <puntos>200</puntos>
     </jugador>
     <jugador>
+        <nombre>PruebaFinal2</nombre>
+        <puntos>200</puntos>
+    </jugador>
+    <jugador>
         <nombre>Alexiselcapo</nombre>
         <puntos>100</puntos>
     </jugador>
@@ -35,11 +38,7 @@
         <puntos>100</puntos>
     </jugador>
     <jugador>
-        <nombre>Ismael</nombre>
-        <puntos>0</puntos>
-    </jugador>
-    <jugador>
-        <nombre>Ismael</nombre>
-        <puntos>0</puntos>
+        <nombre>PruebaFinal</nombre>
+        <puntos>100</puntos>
     </jugador>
 </ranking>

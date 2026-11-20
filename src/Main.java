@@ -255,6 +255,7 @@ public class Main {
                 if (personaje.getVida() <= 0) {
                     ranking.añadirJugador(nombre, puntos);
                     mostrarDerrota(sc, enemigo2, puntos);
+                    ranking.guardarXML();
                     return;
                 } else {
                     puntos = puntos + 100;
@@ -340,6 +341,7 @@ public class Main {
                 pausa(sc);
                 if (personaje.getVida() <= 0) {
                     ranking.añadirJugador(nombre, puntos);
+                    ranking.guardarXML();
                     mostrarDerrota(sc, enemigo3, puntos);
                     return;
                 } else {
@@ -362,7 +364,7 @@ public class Main {
                     System.out.println("Has salvado el reino de Eldoria.");
                     System.out.println("¡Enhorabuena por completar la aventura!");
 
-                    ranking.añadirJugador(nombre, puntos);
+                    
                     pausa(sc);
                 }
 
