@@ -45,8 +45,8 @@ public class Main {
         } while (opcionPersonaje < 1 || opcionPersonaje > 3);
 
         Enemigo enemigo1 = new Enemigo("Goblin", 45, 10, 15);
-        Enemigo enemigo2 = new Enemigo("Orco", 70, 15, 20);
-        Enemigo enemigo3 = new Enemigo("Dragon Oscuro", 100, 15, 25);
+        Enemigo enemigo2 = new Enemigo("Orco", 65, 15, 20);
+        Enemigo enemigo3 = new Enemigo("Dragon Oscuro", 85, 12, 20);
 
         if (opcionPersonaje == 1) {
             personaje = new Personaje("Mago", "Baston magico", 75, 15, 25);
@@ -507,7 +507,7 @@ public class Main {
                 System.out.println("Ya tienes la vida al maximo.");
             } else {
 
-                int nuevaVida = personaje.getVida() + 25;
+                int nuevaVida = personaje.getVida() + 30;
 
                 if (nuevaVida > vidaMaxima) {
                     nuevaVida = vidaMaxima;
